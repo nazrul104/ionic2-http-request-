@@ -1,0 +1,67 @@
+ <ion-navbar *navbar>
+
+      <ion-title></ion-title>
+    </ion-navbar>
+
+    <ion-content>
+    <ion-item-group>
+      <ion-item-divider light>General Information</ion-item-divider>
+      <ion-item>Name    : {{Person.firstname}} {{Person.lastname}}</ion-item>
+      <ion-item>Email   : {{Person.email}}   <ion-icon ios="ios-mail" md="md-mail" item-right></ion-icon></ion-item>
+      <ion-item>Phone   : {{Person.phone}}  <ion-icon ios="ios-call" md="md-call" item-right></ion-icon></ion-item>
+      <ion-item>Package : 2 GB <span style="float:right">Price:2000 BDT</span></ion-item>
+
+      <ion-item-divider light>Payment Information</ion-item-divider>
+      		<div padding>
+  <ion-segment [(ngModel)]="pet">
+    <ion-segment-button value="viewlist">
+      <ion-icon ios="ios-pricetags" md="md-pricetags"></ion-icon> Payments Info
+    </ion-segment-button>
+    <ion-segment-button value="puppies">
+      <ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon> Add New Payment
+    </ion-segment-button>
+  </ion-segment>
+</div>
+
+<div [ngSwitch]="pet">
+  <ion-list *ngSwitchWhen="'puppies'">
+ <ion-item>
+ 	 <ion-label>Select Month</ion-label>
+ 	  <ion-select [(ngModel)]="gaming">
+      <ion-option *ngFor="#m of months" >{{m}}</ion-option>
+
+      </ion-select>
+ </ion-item>
+
+  <ion-item>
+    <ion-input type="number" placeholder="Enter amount"></ion-input>
+  </ion-item>
+<ion-item>
+   Total amount : 0 
+  </ion-item>
+  <ion-item>
+   Dues: 2000 BDT
+  </ion-item>
+  <button secondary block>Save</button>
+  </ion-list>
+
+  <ion-list *ngSwitchWhen="'viewlist'">
+    <ion-item>
+      <ion-row>
+		  <ion-col width-25>Month</ion-col>
+		  <ion-col width-25>Amount</ion-col>
+		  <ion-col width-25>Status</ion-col>
+		  <ion-col width-25>Action</ion-col>
+	</ion-row>
+	<ion-row *ngFor="#p of payment" style="border:1px #cdcdcd solid;">
+		  <ion-col width-25>{{p.month}}</ion-col>
+		  <ion-col width-25>{{p.amount}}</ion-col>
+		  <ion-col width-25>{{p.status}}</ion-col>
+		  <ion-col width-25><ion-icon ios="ios-card" md="md-card"></ion-icon></ion-col>
+	</ion-row>
+    </ion-item>
+  </ion-list>
+</div>
+
+    </ion-item-group>
+    </ion-content>

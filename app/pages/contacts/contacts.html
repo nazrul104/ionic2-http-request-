@@ -1,0 +1,29 @@
+<ion-navbar *navbar>
+ <ion-buttons start>
+    <button royal>
+      <ion-icon ios="ios-person-add" md="md-person-add"></ion-icon>
+    </button>
+  </ion-buttons>
+  <ion-title>Customer List</ion-title>
+  <ion-buttons end>
+      <button royal>
+       <ion-icon ios="ios-camera" md="md-camera"></ion-icon>
+    </button>
+  </ion-buttons>
+  
+</ion-navbar>
+
+<ion-content  >
+<ion-searchbar ></ion-searchbar>
+<ion-list>
+
+  <ion-item *ngFor="#item of data" (click) ="itemTapped(item)">
+   <!--  <ion-thumbnail item-left >
+      <img src="avatar.png" >
+    </ion-thumbnail> -->
+    <h2>{{item.firstname}} {{item.lastname}}</h2>
+   <!--  <p> <ion-icon name="call"></ion-icon> {{item.phone}}</p> -->
+   <!--  <button clear item-right >View</button> -->
+  </ion-item>
+</ion-list>
+</ion-content>
